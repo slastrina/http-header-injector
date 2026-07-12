@@ -328,6 +328,23 @@ input:focus-visible + .track {
   color: var(--red);
 }
 
+.site-link {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-faint);
+  transition: color 0.15s, text-shadow 0.15s;
+}
+
+.site-link:hover {
+  color: var(--amber);
+  text-shadow: 0 0 8px var(--amber-glow);
+}
+
 /* ---- global off state ---- */
 
 body.master-off .list,
