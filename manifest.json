@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "HTTP Header Injector — Modify & Add Request Headers",
-  "version": "1.0.2",
-  "description": "Modify, add, and inject custom HTTP request headers on any page. Toggle each header on/off, scope by URL, and import/export.",
-  "permissions": ["declarativeNetRequest", "storage"],
+  "name": "HTTP Header Injector — Modify Request & Response Headers",
+  "version": "1.1.0",
+  "description": "Add, modify & remove HTTP request and response headers on any site. Per-rule toggles, URL/method scoping, profiles, import/export.",
+  "permissions": ["declarativeNetRequest", "declarativeNetRequestFeedback", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

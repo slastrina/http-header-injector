@@ -20,7 +20,7 @@
 }
 
 body {
-  width: 380px;
+  width: 430px;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--ink);
@@ -74,6 +74,64 @@ h1 {
 
 .sub.live {
   color: var(--amber);
+}
+
+/* ---- profile bar ---- */
+
+.profilebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.profile-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--ink-faint);
+}
+
+.profile-select {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line-bright);
+  border-radius: 2px;
+  padding: 4px 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile-select:focus {
+  border-color: var(--amber);
+}
+
+.profile-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.pf-btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+}
+
+.pf-btn:hover {
+  color: var(--ink);
+  border-color: var(--line-bright);
 }
 
 /* ---- switches ---- */
@@ -140,15 +198,15 @@ input:focus-visible + .track {
 /* ---- rows ---- */
 
 .list {
-  max-height: 340px;
+  max-height: 380px;
   overflow-y: auto;
 }
 
 .row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
-  padding: 10px 16px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   transition: background 0.12s;
 }
@@ -157,17 +215,32 @@ input:focus-visible + .track {
   background: var(--panel);
 }
 
+.row-switch {
+  margin-top: 2px;
+}
+
 .row.disabled .fields {
-  opacity: 0.38;
+  opacity: 0.4;
 }
 
 .fields {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   min-width: 0;
   transition: opacity 0.15s;
+}
+
+.row-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.row-top .name {
+  flex: 1;
+  min-width: 0;
 }
 
 .field {
@@ -180,6 +253,7 @@ input:focus-visible + .track {
   padding: 2px 0;
   outline: none;
   transition: border-color 0.15s;
+  width: 100%;
 }
 
 .field:hover {
@@ -223,6 +297,131 @@ input:focus-visible + .track {
   font-weight: 400;
 }
 
+/* value input hidden when operation is "remove" */
+.row.no-value .value {
+  display: none;
+}
+
+/* ---- mini selects (operation / target / match) ---- */
+
+.mini {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  background: var(--bg);
+  border: 1px solid var(--line-bright);
+  border-radius: 2px;
+  padding: 3px 4px;
+  outline: none;
+  cursor: pointer;
+  flex: none;
+}
+
+.mini:focus {
+  border-color: var(--amber);
+  color: var(--ink);
+}
+
+.target-select {
+  color: var(--amber);
+}
+
+.url-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.url-line .url {
+  flex: 1;
+  min-width: 0;
+}
+
+.match-select {
+  flex: none;
+}
+
+/* ---- advanced / chips ---- */
+
+.advanced {
+  margin-top: 2px;
+}
+
+.advanced > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 3px 0;
+  user-select: none;
+}
+
+.advanced > summary::-webkit-details-marker {
+  display: none;
+}
+
+.advanced > summary::before {
+  content: "▸ ";
+}
+
+.advanced[open] > summary::before {
+  content: "▾ ";
+}
+
+.advanced > summary:hover {
+  color: var(--ink-dim);
+}
+
+.adv-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.adv-label {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  width: 46px;
+  flex: none;
+  padding-top: 4px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.chip {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 3px 6px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+}
+
+.chip:hover {
+  color: var(--ink-dim);
+  border-color: var(--line-bright);
+}
+
+.chip.on {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: rgba(232, 160, 32, 0.08);
+}
+
 .delete-btn {
   font-family: var(--mono);
   font-size: 11px;
@@ -234,6 +433,7 @@ input:focus-visible + .track {
   height: 22px;
   cursor: pointer;
   transition: color 0.12s, border-color 0.12s;
+  flex: none;
 }
 
 .delete-btn:hover {
@@ -294,7 +494,7 @@ input:focus-visible + .track {
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   color: var(--ink-dim);
   background: transparent;
   border: 1px solid var(--line);
@@ -308,6 +508,40 @@ input:focus-visible + .track {
   color: var(--ink);
   border-color: var(--line-bright);
   background: var(--panel-raised);
+}
+
+/* ---- paste panel ---- */
+
+.paste-panel {
+  margin-top: 8px;
+}
+
+.paste-input {
+  width: 100%;
+  height: 96px;
+  resize: vertical;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line-bright);
+  border-radius: 2px;
+  padding: 8px;
+  outline: none;
+}
+
+.paste-input:focus {
+  border-color: var(--amber);
+}
+
+.paste-input::placeholder {
+  color: var(--ink-faint);
+}
+
+.paste-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
 }
 
 .io-msg {
@@ -326,6 +560,70 @@ input:focus-visible + .track {
 
 .io-msg.err {
   color: var(--red);
+}
+
+/* ---- debug ---- */
+
+.debug {
+  margin-top: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.debug > summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  user-select: none;
+}
+
+.debug > summary::-webkit-details-marker {
+  display: none;
+}
+
+.debug > summary::before {
+  content: "▸ ";
+}
+
+.debug[open] > summary::before {
+  content: "▾ ";
+}
+
+.debug > summary:hover {
+  color: var(--ink-dim);
+}
+
+.debug-body {
+  margin-top: 8px;
+}
+
+.debug-list {
+  list-style: none;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.debug-list li {
+  font-size: 10px;
+  color: var(--ink-dim);
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.debug-list li .tag {
+  color: var(--amber);
+}
+
+.debug-list.empty li {
+  border: none;
+  color: var(--ink-faint);
+  padding: 2px 0;
 }
 
 .site-link {
@@ -348,6 +646,7 @@ input:focus-visible + .track {
 /* ---- global off state ---- */
 
 body.master-off .list,
+body.master-off .profilebar,
 body.master-off .footer {
-  opacity: 0.45;
+  opacity: 0.5;
 }

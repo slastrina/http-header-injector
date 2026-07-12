@@ -19,18 +19,48 @@
     </label>
   </header>
 
+  <div class="profilebar">
+    <span class="profile-label">PROFILE</span>
+    <select id="profile-select" class="profile-select"></select>
+    <div class="profile-actions">
+      <button id="profile-new" class="pf-btn" title="New profile">＋</button>
+      <button id="profile-rename" class="pf-btn" title="Rename profile">✎</button>
+      <button id="profile-del" class="pf-btn" title="Delete profile">🗑</button>
+    </div>
+  </div>
+
   <main id="header-list" class="list"></main>
 
-  <p class="empty-hint" id="empty-hint">no headers defined — add one below</p>
+  <p class="empty-hint" id="empty-hint">no headers in this profile — add one below</p>
 
   <footer class="footer">
     <button id="add-btn" class="add-btn">+ ADD HEADER</button>
+
+    <div class="paste-panel" id="paste-panel" hidden>
+      <textarea id="paste-input" class="paste-input" spellcheck="false"
+        placeholder="Paste a headers block (Name: Value per line) or a curl command…"></textarea>
+      <div class="paste-actions">
+        <button id="paste-parse" class="io-btn">PARSE</button>
+        <button id="paste-cancel" class="io-btn">CANCEL</button>
+      </div>
+    </div>
+
     <div class="io-row">
+      <button id="paste-btn" class="io-btn">⌘ PASTE</button>
       <button id="import-btn" class="io-btn">↥ IMPORT</button>
       <button id="export-btn" class="io-btn">↧ EXPORT</button>
     </div>
     <p class="io-msg" id="io-msg"></p>
     <input type="file" id="import-file" accept="application/json,.json" hidden>
+
+    <details class="debug" id="debug">
+      <summary>what fired on this tab</summary>
+      <div class="debug-body">
+        <button id="debug-refresh" class="io-btn">↻ REFRESH</button>
+        <ul class="debug-list" id="debug-list"></ul>
+      </div>
+    </details>
+
     <a class="site-link" href="https://www.iokig.com" target="_blank" rel="noopener noreferrer">
       more software at iokig.com ↗
     </a>
@@ -43,10 +73,38 @@
         <span class="track"><span class="thumb"></span></span>
       </label>
       <div class="fields">
-        <input class="field name" type="text" placeholder="Header-Name" spellcheck="false" autocomplete="off">
+        <div class="row-top">
+          <input class="field name" type="text" placeholder="Header-Name" spellcheck="false" autocomplete="off">
+          <select class="mini op-select" title="Operation">
+            <option value="set">set</option>
+            <option value="append">append</option>
+            <option value="remove">remove</option>
+          </select>
+          <select class="mini target-select" title="Apply to request or response">
+            <option value="request">req</option>
+            <option value="response">res</option>
+          </select>
+        </div>
         <input class="field value" type="text" placeholder="value" spellcheck="false" autocomplete="off">
         <input class="field desc" type="text" placeholder="description (optional)" spellcheck="false" autocomplete="off">
-        <input class="field url" type="text" placeholder="url patterns — blank = all sites, * wildcard, comma-separated" spellcheck="false" autocomplete="off">
+        <div class="url-line">
+          <input class="field url" type="text" placeholder="url patterns — blank = all sites, comma-separated" spellcheck="false" autocomplete="off">
+          <select class="mini match-select" title="Match type">
+            <option value="wildcard">* wild</option>
+            <option value="regex">.* regex</option>
+          </select>
+        </div>
+        <details class="advanced">
+          <summary>advanced — methods &amp; types</summary>
+          <div class="adv-block">
+            <span class="adv-label">methods</span>
+            <div class="chips methods"></div>
+          </div>
+          <div class="adv-block">
+            <span class="adv-label">types</span>
+            <div class="chips types"></div>
+          </div>
+        </details>
       </div>
       <button class="delete-btn" title="Remove">✕</button>
     </div>
