@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Header Injector",
-  "version": "1.0.1",
-  "description": "Inject custom request headers into every page you visit. Toggle each header on and off.",
+  "name": "HTTP Header Injector — Modify & Add Request Headers",
+  "version": "1.0.2",
+  "description": "Modify, add, and inject custom HTTP request headers on any page. Toggle each header on/off, scope by URL, and import/export.",
   "permissions": ["declarativeNetRequest", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {
