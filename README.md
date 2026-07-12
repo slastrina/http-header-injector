@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="store/marquee-1400x560.png" alt="Header Injector — inject custom request headers into every page you visit" width="820">
+</p>
+
 # Header Injector
 
 A minimal Chrome extension (Manifest V3) that injects custom request headers
@@ -10,6 +14,10 @@ network stack itself — no request interception scripts, works on all resource
 types (pages, XHR/fetch, images, websockets, etc.).
 
 Product page: **[iokig.com/header-injector](https://www.iokig.com/header-injector)**
+
+<p align="center">
+  <img src="store/screenshot-1280x800.png" alt="Header Injector popup showing a configured header with name, value, description and URL pattern, plus import and export controls" width="720">
+</p>
 
 ## Install
 
