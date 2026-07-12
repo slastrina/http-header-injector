@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="title-block">
+      <span class="glyph">⌁</span>
+      <div>
+        <h1>HEADER&nbsp;INJECTOR</h1>
+        <p class="sub" id="status-line">0 ACTIVE</p>
+      </div>
+    </div>
+    <label class="master-switch" title="Master on/off">
+      <input type="checkbox" id="master-toggle" checked>
+      <span class="track"><span class="thumb"></span></span>
+    </label>
+  </header>
+
+  <main id="header-list" class="list"></main>
+
+  <p class="empty-hint" id="empty-hint">no headers defined — add one below</p>
+
+  <footer class="footer">
+    <button id="add-btn" class="add-btn">+ ADD HEADER</button>
+    <div class="io-row">
+      <button id="import-btn" class="io-btn">↥ IMPORT</button>
+      <button id="export-btn" class="io-btn">↧ EXPORT</button>
+    </div>
+    <p class="io-msg" id="io-msg"></p>
+    <input type="file" id="import-file" accept="application/json,.json" hidden>
+  </footer>
+
+  <template id="row-template">
+    <div class="row">
+      <label class="row-switch" title="Enable this header">
+        <input type="checkbox" class="row-toggle">
+        <span class="track"><span class="thumb"></span></span>
+      </label>
+      <div class="fields">
+        <input class="field name" type="text" placeholder="Header-Name" spellcheck="false" autocomplete="off">
+        <input class="field value" type="text" placeholder="value" spellcheck="false" autocomplete="off">
+        <input class="field desc" type="text" placeholder="description (optional)" spellcheck="false" autocomplete="off">
+        <input class="field url" type="text" placeholder="url patterns — blank = all sites, * wildcard, comma-separated" spellcheck="false" autocomplete="off">
+      </div>
+      <button class="delete-btn" title="Remove">✕</button>
+    </div>
+  </template>
+
+  <script src="popup.js"></script>
+</body>
+</html>

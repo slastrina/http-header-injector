@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Header Injector",
+  "version": "1.0.0",
+  "description": "Inject custom request headers into every page you visit. Toggle each header on and off.",
+  "permissions": ["declarativeNetRequest", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon/icon16.png",
+    "32": "icon/icon32.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Header Injector",
+    "default_icon": {
+      "16": "icon/icon16.png",
+      "32": "icon/icon32.png",
+      "48": "icon/icon48.png",
+      "128": "icon/icon128.png"
+    }
+  }
+}
