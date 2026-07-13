@@ -92,3 +92,8 @@ Notes:
 - Headers are stored in `chrome.storage.sync`, so they follow your Chrome profile
 - Injected headers are visible to every site you visit while enabled — turn the
   master switch off when you're done testing
+
+## License
+
+[MIT](LICENSE) © Samuel Lastrina. Free to use, including commercially — just
+keep the copyright and license notice when you redistribute or build on it.
